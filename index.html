@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mission to Mars</title>
+   
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+   crossorigin="anonymous">
+</head>
+<body class='text-white'style="background-color:MidnightBlue;" >
+  <div class="container">
+
+    
+    <div class="jumbotron text-center" style="background-image: url(http://en.es-static.us/upl/2018/11/mars-landing-curiosity-artist-e1543073738523.jpeg); background-size: 100%; height: 100%;">
+        <h1 class="display-4" >Mission to Mars</h1>
+        <a class="btn btn-lg text-white" style="background-color:DeepSkyBlue;" href="/scrape" role="button">Scrape New
+            Data</a>
+    </div>
+    
+    <div class="container">
+        <h2>LATEST MARS NEWS</h2>
+        <p>News Title</p>
+        <h4 style="color:MediumVioletRed">{{mars_information.news_title}}</h4>
+        <p>News Paragraph Text</p>
+        <p>{{mars_info.news_paragraph}}</p>
+    </div>
+
+    <div class="container">
+      <div class='row'>
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xm-12">
+        <h3>MARS BACKGROUND IMAGE</h3>
+        <img src="{{mars_information.featured_image_url}}" style="max-width:100%; max-height: auto;" alt="Mars Image">
+        
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xm-12">
+          <div class="card" style="width: 20rem;">
+            <div class="card-body text-white bg-dark">
+              <h5 class="card-title">MARS CURRENT WEATHER</h5>
+              <p class="card-text">{{mars_info.mars_weather}}</p>
+              
+            </div>
+          </div>
+          
+          <br>
+          <h5>MARS FACTS</h5>
+          <table>{{mars_info.mars_facts|safe}}</table>
+
+        </div>
+      </div>
+    </div>
+    <h3 style="padding-top:30px; text-align: center;">MARS HEMISPHERES</h3>
+    <div class='card-deck'>
+      <div class='col-md-12'>
+          <div class="row">
+              {% for h in mars_info.hemisphere_image_urls %}
+              <div class="col-md-6">
+                  <div class="card text-white bg-dark" style="margin: 30px;">
+                      <img class="card-img-top" src="{{h.image_url}}" />
+                      <div class="card-body">
+                          <p class="card-text">{{h.title}}</p>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+              
+
+      </div>
+    </div>
+
+
+  </div> 
+</body>
+
+</html>
